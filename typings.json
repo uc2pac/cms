@@ -1,0 +1,12 @@
+{
+  "name": "cms",
+  "version": false,
+  "ambientDependencies": {
+    "angular": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#fa3294c560ee49f4af43e02a62e3f4b5b6bbe5e5",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160505172921"
+  },
+  "dependencies": {
+    "node-uuid": "github:typed-typings/typed-node-uuid/main.d.ts#0ad598e4a3e21eb6372b48ea3f17c7132ead33bf"
+  }
+}
