@@ -1,0 +1,13 @@
+<div>
+    <button (click)="addPage()">Add New Page</button>
+</div>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let page of pages">
+        <td>{{page.name}}</td>
+        <td>here will be actions</td>
+    </tr>
+</table>

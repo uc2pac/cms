@@ -1,6 +1,9 @@
 "use strict";
-var browser_1 = require('angular2/platform/browser');
-var app_component_1 = require('./app.component');
-browser_1.bootstrap(app_component_1.AppComponent)
-    .catch(function (err) { return console.log(err); });
+const core_1 = require('@angular/core');
+const platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
+const app_module_1 = require('./app.module');
+if (process.env.NODE_ENV === 'production') {
+    core_1.enableProdMode();
+}
+platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
 //# sourceMappingURL=bootstrap.js.map
