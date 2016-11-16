@@ -1,9 +1,21 @@
+let pages = [{
+    name: 'this is page 1'
+}, {
+    name: 'this is page 2'
+}];
+
 function get(req, res) {
-    console.log('get pages');
+    res.json(pages);
 }
 
 function create(req, res) {
-    console.log('create pages');
+    let page = {
+        name: `this is page ${pages.length}`
+    };
+
+    pages.push(page);
+
+    res.json(page);
 }
 
 function update(req, res) {
