@@ -28,7 +28,11 @@ module.exports = {
   devServer: {
     // This is required for webpack-dev-server. The path should
     // be an absolute path to your build destination.
-    outputPath: path.join(__dirname, 'dist')
+    outputPath: path.join(__dirname, 'dist'),
+    inline: true,
+    colors: true,
+    publicPath: '/',
+    historyApiFallback: true
   },
  
   // Switch loaders to debug mode
