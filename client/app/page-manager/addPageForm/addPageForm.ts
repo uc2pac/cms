@@ -1,0 +1,37 @@
+import {
+    Component,
+    trigger,
+    state,
+    style,
+    transition,
+    animate
+} from '@angular/core';
+import {Router} from '@angular/router';
+
+import {PagesService} from '../pagesService';
+
+@Component({
+    selector: 'add-page-form',
+    template: require('./addPageForm.html'),
+    providers: [PagesService],
+    animations: [trigger(
+        'slideDown', [
+            state('collapsed, void', style({height: '0px'})),
+            state('expanded', style({height: '*'})),
+            transition('collapsed <=> expanded', [animate(500, style({height: '250px'})), animate(500)])
+        ]
+    )]
+})
+export class AddPageComponent {
+    public state: boolean = false;
+
+    constructor(private pagesService: PagesService, private router: Router) {
+
+    }
+
+    // add new page
+    addPage = function(): void {
+        console.log('hit');
+        this.pagesService.addPage().subscribe(page => this.router.navigate([`/pages/${page.id}`]));
+    }
+}

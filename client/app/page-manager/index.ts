@@ -3,16 +3,21 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { PagesListComponent } from './list/list';
+import { PageListComponent } from './list/list';
+import { PageComponent } from './page/page';
+import { AddPageComponent } from './addPageForm/addPageForm';
 
 const routes: Routes = [{
-    path: 'pages-manager',
-    component: PagesListComponent
+    path: 'page-manager', component: PageListComponent
+}, {
+    path: 'pages/:id', component: PageComponent
 }];
 
 @NgModule({
     declarations: [
-        PagesListComponent
+        PageListComponent,
+        PageComponent,
+        AddPageComponent
     ],
     providers: [],
     imports: [

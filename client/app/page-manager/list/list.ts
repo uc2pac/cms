@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 import {PagesService} from '../pagesService';
 
@@ -7,10 +8,10 @@ import {PagesService} from '../pagesService';
     template: require('./list.html'),
     providers: [PagesService]
 })
-export class PagesListComponent implements OnInit {
+export class PageListComponent implements OnInit {
   public pages: any[];
 
-  constructor(private pagesService: PagesService) {
+  constructor(private pagesService: PagesService, private router: Router) {
     
   }
 
@@ -22,11 +23,5 @@ export class PagesListComponent implements OnInit {
       this.pagesService.getPages()
           .subscribe(data => this.pages = data,
               error => console.log('error'));
-  }
-
-  // add new page
-  addPage = function(): void {
-    console.log('hit');
-    this.pagesService.addPage().subscribe(page => this.pages.push(page));
   }
 }

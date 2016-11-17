@@ -10,7 +10,7 @@ import { FooterComponent } from './app/main/footer/footer';
 import { DashboardComponent } from './app/main/dashboard/dashboard';
 import { SidebarComponent } from './app/main/sidebar/sidebar';
 
-import { PagesManagementModule } from './app/pages-manager';
+import { PagesManagementModule } from './app/page-manager';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent }

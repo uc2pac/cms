@@ -1,7 +1,15 @@
 var express = require('express'),
-    routes = require('./routes');
+    bodyParser = require('body-parser'),
+    routes = require('./routes'),
+    mongoose = require('mongoose');
 
 var app = express();
+
+// DB
+mongoose.connect('mongodb://localhost/test');
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // Middleware
 app.use(function (req, res, next) {
@@ -18,7 +26,7 @@ app.get('/', function (req, res) {
 });
 
 // Routes
-app.use('/api', routes);
+app.use(routes);
 
 app.listen(3333, function() {
     console.log('Application is running on port 3333');

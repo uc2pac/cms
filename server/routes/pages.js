@@ -1,21 +1,21 @@
-let pages = [{
-    name: 'this is page 1'
-}, {
-    name: 'this is page 2'
-}];
+var Page = require('../models/page');
 
 function get(req, res) {
-    res.json(pages);
+    var query = req.query.id ? {
+        '_id': req.query.id
+    } : {};
+
+    Page.find(query, function(err, pages) {
+        if (err) throw err;
+
+        res.json(pages);
+    });
 }
 
 function create(req, res) {
-    let page = {
-        name: `this is page ${pages.length}`
-    };
-
-    pages.push(page);
-
-    res.json(page);
+    createPage(req.body.title, function(page) {
+        res.json(page);
+    });
 }
 
 function update(req, res) {
@@ -26,24 +26,19 @@ function remove(req, res) {
     console.log('delete pages');
 }
 
-module.exports = function(req, res) {
-    var originalUrl = req.originalUrl;
-    
-    switch(req.originalUrl) {
-        case '/api/pages.get':
-            get(req, res);
-            break;
-        case '/api/pages.post':
-            create(req, res);
-            break;
-        case '/api/pages.update':
-            update(req, res);
-            break;
-        case '/api/pages.delete':
-            remove(req, res);
-            break;
+function createPage(title, cb) {
+    var newPage = Page({
+        'title': title
+    });
 
-        // default:
-            // default code block
-    }
+    newPage.save(function(err, user) {
+        if (err) throw err;
+
+        cb(user)
+    });
+}
+
+module.exports = {
+    get: get,
+    create: create
 };

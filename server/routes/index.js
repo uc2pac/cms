@@ -1,9 +1,11 @@
-var pages = require('./pages.js');
+var express = require('express'),
+    pages = require('./pages.js');
 
+var router = express.Router();
 
-module.exports = function(req, res) {
-    
-    if (req.originalUrl.startsWith('/api/pages')) {
-        pages(req, res);
-    }
-}
+router
+    .get('/api/pages.get', pages.get)
+    .get('/api/pages.getone', pages.get)
+    .post('/api/pages.post', pages.create);
+
+module.exports = router;

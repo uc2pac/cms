@@ -1,13 +1,11 @@
-<div>
-    <button (click)="addPage()" class="btn btn-default">Add New Page</button>
-</div>
+<add-page-form></add-page-form>
 <table class="table">
     <tr>
-        <th>Name</th>
+        <th>Title</th>
         <th>Action</th>
     </tr>
     <tr *ngFor="let page of pages">
-        <td>{{page.name}}</td>
+        <td><a [routerLink]="['/pages', page._id]">{{page.title}}</a></td>
         <td>here will be actions</td>
     </tr>
 </table>

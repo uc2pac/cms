@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -11,6 +11,12 @@ export class PagesService {
     }
 
     // TODO: redo to observables !!!!!!!!!!!ASAP
+    getPage(id) {
+        return this.http.get(`http://localhost:3333/api/pages.getone?id=${id}`)
+            .map((response) => response.json())
+            .share();
+    }
+
     getPages() {
         return this.http.get('http://localhost:3333/api/pages.get')
             .map((response) => response.json())
@@ -19,14 +25,12 @@ export class PagesService {
 
     // TODO: redo to observables !!!!!!!!!!!ASAP
     addPage() {
-        console.log('hit again');
-        return this.http.post('http://localhost:3333/api/pages.post', {})
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('http://localhost:3333/api/pages.post', JSON.stringify({'title': 'super tirle'}), options)
             .map((response) => response.json())
             .share();
-    }
-
-    getPage() {
-
     }
 
     updatePage() {
