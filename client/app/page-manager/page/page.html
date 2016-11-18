@@ -1,1 +1,11 @@
-<h2>{{page.title}}</h2>
+<form>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" [(ngModel)]="page.title" class="form-control" name="title" id="title" placeholder="Title" required>
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea [(ngModel)]="page.content" class="form-control" name="content" id="content" placeholder="Content"></textarea>
+    </div>
+    <button class="btn btn-default" (click)="updatePage()">Update</button>
+</form>

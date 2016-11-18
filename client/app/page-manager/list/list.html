@@ -2,10 +2,23 @@
 <table class="table">
     <tr>
         <th>Title</th>
+        <th>Created At</th>
         <th>Action</th>
     </tr>
     <tr *ngFor="let page of pages">
         <td><a [routerLink]="['/pages', page._id]">{{page.title}}</a></td>
-        <td>here will be actions</td>
+        <td>{{page.created_at | date:'short'}}</td>
+        <td>
+            <div class="btn-group" ngbDropdown>
+                <button type="button" class="btn btn-default">Edit</button>
+                <button type="button" class="btn btn-default dropdown-toggle" ngbDropdownToggle>
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a (click)="deletePage(page._id)">Delete</a></li>
+                </ul>
+            </div>
+        </td>
     </tr>
 </table>

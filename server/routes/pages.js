@@ -1,11 +1,11 @@
 var Page = require('../models/page');
 
 function get(req, res) {
-    var query = req.query.id ? {
-        '_id': req.query.id
+    var params = req.params.id ? {
+        '_id': req.params.id
     } : {};
 
-    Page.find(query, function(err, pages) {
+    Page.find(params, function(err, pages) {
         if (err) throw err;
 
         res.json(pages);
@@ -19,11 +19,26 @@ function create(req, res) {
 }
 
 function update(req, res) {
-    console.log('update pages');
+    let id = req.params.id;
+    let body = req.body.page;
+
+    Page.findByIdAndUpdate(id, body, {new: true}, function(err, page) {
+        if (err) throw err;
+
+        res.send(page);
+    });
 }
 
 function remove(req, res) {
-    console.log('delete pages');
+    let id = req.params.id;
+
+    Page.findByIdAndRemove(id, function(err, page) {
+        if (err) throw err;
+
+        res.send({
+            description: 'Page successfully deleted!'
+        });
+    });
 }
 
 function createPage(title, cb) {
@@ -40,5 +55,7 @@ function createPage(title, cb) {
 
 module.exports = {
     get: get,
-    create: create
+    create: create,
+    update: update,
+    remove: remove
 };

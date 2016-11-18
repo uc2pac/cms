@@ -10,25 +10,34 @@ import {PagesService} from '../pagesService';
 })
 export class PageComponent implements OnInit, OnDestroy {
     public page: any = {};
-    private sub: any;
+    private subscription: any;
     
     constructor(private route: ActivatedRoute, private pagesService: PagesService) {}
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
+        this.subscription = this.route.params.subscribe(params => {
             let id = params['id'];
 
             this.pagesService.getPage(id).subscribe(
-                data => {
-                    console.log(data[0]);
-                    this.page = data[0]
-                },
+                data => this.page = data[0],
                 error => console.log('error')
             );
         });
     }
 
+    updatePage() {
+        let body = {
+            title: this.page.title,
+            content: this.page.content
+        };
+
+        this.pagesService.updatePage(this.page._id, body).subscribe(
+            page => this.page = page,
+            error => console.log('error')
+        );
+    }
+
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        this.subscription.unsubscribe();
     }
 }

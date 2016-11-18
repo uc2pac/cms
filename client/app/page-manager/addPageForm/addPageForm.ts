@@ -24,6 +24,7 @@ import {PagesService} from '../pagesService';
 })
 export class AddPageComponent {
     public state: boolean = false;
+    public title: string = '';
 
     constructor(private pagesService: PagesService, private router: Router) {
 
@@ -32,6 +33,6 @@ export class AddPageComponent {
     // add new page
     addPage = function(): void {
         console.log('hit');
-        this.pagesService.addPage().subscribe(page => this.router.navigate([`/pages/${page.id}`]));
+        this.pagesService.addPage(this.title).subscribe(page => this.router.navigate([`/pages/${page._id}`]));
     }
 }

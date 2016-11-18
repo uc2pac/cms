@@ -4,8 +4,10 @@ var express = require('express'),
 var router = express.Router();
 
 router
-    .get('/api/pages.get', pages.get)
-    .get('/api/pages.getone', pages.get)
-    .post('/api/pages.post', pages.create);
+    .get('/api/pages', pages.get)
+    .get('/api/pages/:id', pages.get)
+    .post('/api/pages', pages.create)
+    .put('/api/pages/:id', pages.update)
+    .delete('/api/pages/:id', pages.remove);
 
 module.exports = router;

@@ -13,3 +13,6 @@ import '@angular/http';
 
 // RxJS
 import 'rxjs';
+
+// ng2-bootstrap (UI components)
+import '@ng-bootstrap/ng-bootstrap';

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+
 import { PageListComponent } from './list/list';
 import { PageComponent } from './page/page';
 import { AddPageComponent } from './addPageForm/addPageForm';
@@ -24,6 +26,7 @@ const routes: Routes = [{
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
+        NgbModule,
         RouterModule.forRoot(routes)
     ]
 })
