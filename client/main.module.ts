@@ -11,6 +11,7 @@ import { DashboardComponent } from './app/main/dashboard/dashboard';
 import { SidebarComponent } from './app/main/sidebar/sidebar';
 
 import { PagesManagementModule } from './app/page-manager';
+import { MediaLibraryModule } from './app/media-library';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent }
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule,
     PagesManagementModule,
+    MediaLibraryModule,
     RouterModule.forRoot(appRoutes, {
       useHash: false
     }),

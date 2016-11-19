@@ -7,18 +7,19 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 import { PageListComponent } from './list/list';
 import { PageComponent } from './page/page';
+import { SidebarComponent } from './sidebar/sidebar';
 import { AddPageComponent } from './addPageForm/addPageForm';
 
-const routes: Routes = [{
-    path: 'page-manager', component: PageListComponent
-}, {
-    path: 'pages/:id', component: PageComponent
-}];
+const routes: Routes = [
+    {path: 'page-manager', component: PageListComponent}, 
+    {path: 'pages/:id', component: PageComponent}
+];
 
 @NgModule({
     declarations: [
         PageListComponent,
         PageComponent,
+        SidebarComponent,
         AddPageComponent
     ],
     providers: [],

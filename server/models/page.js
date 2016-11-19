@@ -7,6 +7,9 @@ var pageSchema = new Schema({
         required: true
     },
     content: String,
+    base_image: {
+        type: String
+    },
     created_at: {
         type: Date,
         default: Date.now
