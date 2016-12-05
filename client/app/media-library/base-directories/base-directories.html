@@ -1,13 +1,8 @@
 <div>
     <ngb-tabset type="pills">
-        <ngb-tab title="Images">
+        <ngb-tab *ngFor="let directory of baseDirectories"  title="{{directory}}">
             <template ngbTabContent>
-                <media-tree></media-tree>
-            </template>
-        </ngb-tab>
-        <ngb-tab title="Video">
-            <template ngbTabContent>
-                <p>Video</p>
+                <media-tree [root]="directory"></media-tree>
             </template>
         </ngb-tab>
     </ngb-tabset>

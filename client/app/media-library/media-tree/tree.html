@@ -1,5 +1,14 @@
 <div>
     <div>
-        <button (click)="addFolder()" class="btn btn-default">Add Folder</button>
+        <form>
+            <input type="text" [(ngModel)]="folderName" class="form-control" name="folder-name" />
+            <button (click)="addFolder()" class="btn btn-default">Add Folder</button>
+        </form>
+    </div>
+    <breadcrumbs [path]="crumbs" (selectCrumb)="getResources($event)"></breadcrumbs>
+    <div class="row">
+        <div class="col-sm-2" *ngFor="let resource of media">
+            <media-folder [resource]="resource" (open)="getResources($event)"></media-folder>
+        </div>
     </div>
 </div>

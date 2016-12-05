@@ -1,43 +1,29 @@
-var File = require('../models/file');
+var Resource = require('../models/resource');
 var CONFIG = require('../config');
 var fs = require('fs');
 
-function getBaseDirectories(req, res) {
-    res.send({});
-}
-
-function addResource(req, res) {
-    // TODO: investigate better way
-    let path = `./fs${req.body.parent}/${req.body.name}`;
-    let meta = {
-        id: req.body.name,
-        path: req.body.parent
-    };
-
-    makeDir(path, function() {
-        saveMetadata(meta, function(result) {
-            res.send(result);
-        })
-    })
-}
-
-function makeDir(path, cb) {
-    fs.mkdir(path, function(err) {
-        if (err && err.code !== 'EEXIST') throw err;
-        cb();
+function getResources(req, res) {
+    let path = req.query.path ? req.query.path : '';
+    
+    Resource.find({'path': path}, function(err, resources) {
+        if (err) throw err;
+        res.send(resources);
     });
 }
 
-function saveMetadata(meta, cb) {
-    var newFile = File(meta);
+function addResource(req, res) {
+    console.log(req.headers);
+    return;
+    
+    var newResource = Resource(req.body);
 
-    newFile.save(function(err, file) {
+    newResource.save(function(err, resource) {
         if (err) throw err;
-        cb(file)
+        res.send(resource);
     });
 }
 
 module.exports = {
-    getBaseDirectories: getBaseDirectories,
+    getResources: getResources,
     addResource: addResource
 };

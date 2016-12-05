@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app/main/app.component';
 import { HeaderComponent } from './app/main/header/header';
@@ -10,6 +10,7 @@ import { FooterComponent } from './app/main/footer/footer';
 import { DashboardComponent } from './app/main/dashboard/dashboard';
 import { SidebarComponent } from './app/main/sidebar/sidebar';
 
+import { SelfCommonModule } from './app/common';
 import { PagesManagementModule } from './app/page-manager';
 import { MediaLibraryModule } from './app/media-library';
 
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule,
+    SelfCommonModule,
     PagesManagementModule,
     MediaLibraryModule,
     RouterModule.forRoot(appRoutes, {

@@ -5,6 +5,8 @@ import {AppModule} from './main.module';
 
 require('./app/common/styles/styles.scss');
 
+require('font-awesome-sass-loader');
+
 /* if (process.env.NODE_ENV === 'production') {
     enableProdMode();
 } */

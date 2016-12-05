@@ -2,13 +2,14 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var fileSchema = new Schema({
-    id: {
+    name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     path: {
         type: String,
-        require: true
+        required: true
     },
     created_at: {
         type: Date,

@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 
 import { BaseDirectoriesComponent } from './base-directories';
 import { MediaTreeComponent } from './media-tree';
 import { FolderComponent } from './media-folder';
+import { BreadcrumbsComponent } from '../common/components/breadcrumbs';
 
 const routes: Routes = [
     {path: 'media-library', component: BaseDirectoriesComponent}
@@ -17,11 +20,15 @@ const routes: Routes = [
     declarations: [
         BaseDirectoriesComponent,
         MediaTreeComponent,
-        FolderComponent
+        FolderComponent,
+        BreadcrumbsComponent
     ],
     providers: [],
     imports: [
         NgbModule,
+        FileUploadModule,
+        FormsModule,
+        CommonModule,
         RouterModule.forRoot(routes)
     ]
 })

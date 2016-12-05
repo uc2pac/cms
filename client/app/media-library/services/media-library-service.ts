@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
+import {Http, Headers, Response, RequestOptions, URLSearchParams} from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -10,19 +10,22 @@ export class MediaLibraryService {
 
     }
 
-    getBaseDirectories() {
-        return this.http.get('http://localhost:3333/api/directories')
+    getResources(path) {
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('path', path);
+
+        return this.http.get('http://localhost:3333/api/directories', {search: params})
             .map((response: Response) => response.json())
             .share();
     }
 
-    addResource(name, parent) {
+    addResource(metadata) {
         let params = {
             name: name,
             parent: parent
         };
 
-        return this.http.post('http://localhost:3333/api/directories', params)
+        return this.http.post('http://localhost:3333/api/directories', metadata)
             .map((response: Response) => response.json())
             .share();
     }

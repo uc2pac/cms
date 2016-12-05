@@ -1,0 +1,6 @@
+<div>
+    <ol class="breadcrumb">
+        <li *ngFor="let crumb of crumbs; let i = index" (click)="select($event, i)"><a href="#">{{crumb}}</a></li>
+        <li class="active">{{lastCrumb}}</li>
+    </ol>
+</div>

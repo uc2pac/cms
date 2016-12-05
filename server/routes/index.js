@@ -12,7 +12,7 @@ router
     .put('/api/pages/:id', pages.update)
     .delete('/api/pages/:id', pages.remove)
     // Media Library
-    .get('/api/directories', media.getBaseDirectories)
+    .get('/api/directories', media.getResources)
     .post('/api/directories', media.addResource);
 
 module.exports = router;

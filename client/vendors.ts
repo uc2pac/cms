@@ -16,3 +16,6 @@ import 'rxjs';
 
 // ng2-bootstrap (UI components)
 import '@ng-bootstrap/ng-bootstrap';
+
+// ng2-file-upload
+import 'ng2-file-upload/ng2-file-upload';
