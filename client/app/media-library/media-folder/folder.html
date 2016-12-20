@@ -4,7 +4,8 @@
     (fileOver)="fileOverBase($event)"
     (onFileDrop)="fileDropped($event)"
     [uploader]="uploader"
+    [class.over-drop-zone]="hasBaseDropZoneOver"
     class="thumbnail text-center">
         <i class="fa fa-folder-o fa-5x" aria-hidden="true"></i>
-        <p>{{resource.name}}</p>
 </div>
+<p>{{resource.name}}</p>

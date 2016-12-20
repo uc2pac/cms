@@ -47,6 +47,10 @@ export class MediaTreeComponent implements OnInit {
         );
     }
 
+    fileUploaded(file) {
+        this.media.push(file);
+    }
+
     private createPath(resource): String {
         if (typeof resource === 'string') return resource;
 

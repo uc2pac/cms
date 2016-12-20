@@ -5,31 +5,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
-import { PageListComponent } from './list/list';
-import { PageComponent } from './page/page';
-import { SidebarComponent } from './sidebar/sidebar';
-import { AddPageComponent } from './addPageForm/addPageForm';
+import { CategoryListComponent } from './category-list/category-list';
+import { CategoryComponent } from './category/category';
 
 const routes: Routes = [
-    {path: 'page-manager', component: PageListComponent}, 
-    {path: 'pages/:id', component: PageComponent}
+    {path: 'categories', component: CategoryListComponent},
+    {path: 'categories/:id', component: CategoryComponent}
 ];
 
 @NgModule({
     declarations: [
-        PageListComponent,
-        PageComponent,
-        SidebarComponent,
-        AddPageComponent
+        CategoryListComponent,
+        CategoryComponent
     ],
     providers: [],
     imports: [
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
-        NgbModule.forRoot(),
+        NgbModule,
         RouterModule.forRoot(routes)
     ]
 })
-export class PagesManagementModule {
+export class CategoryManagementModule {
 }

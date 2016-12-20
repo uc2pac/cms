@@ -3,13 +3,21 @@ import {ActivatedRoute} from '@angular/router';
 
 import {PagesService} from '../pagesService';
 
+class Page {
+    _id: string;
+    title: string;
+    content: string;
+    base_image: string;
+    category: string
+}
+
 @Component({
     selector: 'page',
     template: require('./page.html'),
     providers: [PagesService]
 })
 export class PageComponent implements OnInit, OnDestroy {
-    public page: any = {};
+    public page: Page = new Page();
     private subscription: any;
     
     constructor(private route: ActivatedRoute, private pagesService: PagesService) {}
@@ -35,6 +43,10 @@ export class PageComponent implements OnInit, OnDestroy {
             page => this.page = page,
             error => console.log('error')
         );
+    }
+
+    categorySelected(category) {
+        console.log(category);
     }
 
     ngOnDestroy() {

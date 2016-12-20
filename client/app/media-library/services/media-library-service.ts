@@ -14,7 +14,7 @@ export class MediaLibraryService {
         let params: URLSearchParams = new URLSearchParams();
         params.set('path', path);
 
-        return this.http.get('http://localhost:3333/api/directories', {search: params})
+        return this.http.get('http://localhost:3333/api/resources', {search: params})
             .map((response: Response) => response.json())
             .share();
     }
@@ -25,7 +25,17 @@ export class MediaLibraryService {
             parent: parent
         };
 
-        return this.http.post('http://localhost:3333/api/directories', metadata)
+        return this.http.post('http://localhost:3333/api/resources', metadata)
+            .map((response: Response) => response.json())
+            .share();
+    }
+
+    getImages(limit, skip) {
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('limit', limit);
+        params.set('skip', skip);
+
+        return this.http.get('http://localhost:3333/api/resources/images', {search: params})
             .map((response: Response) => response.json())
             .share();
     }

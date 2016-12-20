@@ -3,6 +3,8 @@ var express = require('express'),
     routes = require('./routes'),
     mongoose = require('mongoose');
 
+var errorHandler = require('strong-error-handler');
+
 var app = express();
 
 // DB
@@ -10,6 +12,8 @@ mongoose.connect('mongodb://localhost/test');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.use(errorHandler({debug:true, log:true}));
 
 // Middleware
 app.use(function (req, res, next) {
@@ -20,6 +24,8 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     next();
 });
+
+app.use('/media', express.static(__dirname + '/../media-library'));
 
 app.get('/', function (req, res) {
     res.send('Ramen Mock Backend. Please use api/endpoint to access JSON data');

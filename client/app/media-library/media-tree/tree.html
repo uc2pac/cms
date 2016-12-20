@@ -7,8 +7,14 @@
     </div>
     <breadcrumbs [path]="crumbs" (selectCrumb)="getResources($event)"></breadcrumbs>
     <div class="row">
-        <div class="col-sm-2" *ngFor="let resource of media">
-            <media-folder [resource]="resource" (open)="getResources($event)"></media-folder>
+        <div class="col-sm-3" *ngFor="let resource of media">
+            <media-folder *ngIf="!resource.kind" 
+                        [resource]="resource" 
+                        (open)="getResources($event)"
+                        (uploaded)="fileUploaded($event)"></media-folder>
+            <media-file *ngIf="resource.kind && resource.kind === 'image'" 
+                        [resource]="resource"></media-file>
         </div>
     </div>
 </div>
+<template ngbModalContainer></template>

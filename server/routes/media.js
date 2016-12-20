@@ -1,29 +1,20 @@
-var Resource = require('../models/resource');
-var CONFIG = require('../config');
-var fs = require('fs');
+var express = require('express');
+var router = express.Router();
+var Uploader = require('../middleware/uploader');
+var Media = require('../controllers/media');
 
-function getResources(req, res) {
-    let path = req.query.path ? req.query.path : '';
-    
-    Resource.find({'path': path}, function(err, resources) {
-        if (err) throw err;
-        res.send(resources);
-    });
-}
+// REST
+/*  
+resources
+respurces/:id
+resources/images
+resources/images/:id
+*/
 
-function addResource(req, res) {
-    console.log(req.headers);
-    return;
-    
-    var newResource = Resource(req.body);
 
-    newResource.save(function(err, resource) {
-        if (err) throw err;
-        res.send(resource);
-    });
-}
+// Media routes
+router.get('/api/resources', Media.getResources)
+    .post('/api/resources', Uploader.any(), Media.addResource)
+    .get('/api/resources/images', Media.getImages);
 
-module.exports = {
-    getResources: getResources,
-    addResource: addResource
-};
+module.exports = router;

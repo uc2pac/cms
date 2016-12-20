@@ -12,6 +12,7 @@ import { SidebarComponent } from './app/main/sidebar/sidebar';
 
 import { SelfCommonModule } from './app/common';
 import { PagesManagementModule } from './app/page-manager';
+import { CategoryManagementModule } from './app/category-manager';
 import { MediaLibraryModule } from './app/media-library';
 
 const appRoutes: Routes = [
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     HttpModule,
     SelfCommonModule,
     PagesManagementModule,
+    CategoryManagementModule,
     MediaLibraryModule,
     RouterModule.forRoot(appRoutes, {
       useHash: false

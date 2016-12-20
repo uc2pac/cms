@@ -1,19 +1,16 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var pageSchema = new Schema({
+var categorySchema = new Schema({
     title: {
         type: String,
         required: true
     },
     content: String,
     base_image: {
-        type: String,
-        default: 'placeholder171x180.svg'
-    },
-    category: {
         type: String
     },
+    parent_category: String,
     created_at: {
         type: Date,
         default: Date.now
@@ -21,6 +18,6 @@ var pageSchema = new Schema({
     updated_at: Date
 });
 
-var Page = mongoose.model('Page', pageSchema);
+var Category = mongoose.model('Category', categorySchema);
 
-module.exports = Page;
+module.exports = Category;

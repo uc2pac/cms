@@ -7,12 +7,14 @@
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea [(ngModel)]="page.content" class="form-control" name="content" id="content" placeholder="Content"></textarea>
+                <textarea [(ngModel)]="page.content" class="form-control" name="content" id="content" rows="9" placeholder="Content"></textarea>
             </div>
             <button class="btn btn-default" (click)="updatePage()">Update</button>
         </form>
     </div>
     <div class="col-sm-3">
-        <page-sidebar></page-sidebar>
+        <page-sidebar [page]="page"></page-sidebar>
     </div>
 </div>
+
+<template ngbModalContainer></template>

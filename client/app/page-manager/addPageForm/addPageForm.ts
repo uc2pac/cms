@@ -32,7 +32,6 @@ export class AddPageComponent {
 
     // add new page
     addPage = function(): void {
-        console.log('hit');
         this.pagesService.addPage(this.title).subscribe(page => this.router.navigate([`/pages/${page._id}`]));
     }
 }
